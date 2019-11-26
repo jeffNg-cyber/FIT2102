@@ -1,7 +1,7 @@
 # FIT2102
 Functional programming
 
-This respo includes my solutions for 2 assignments in FIT2102 S2-2019
+This repo includes my solutions for 2 assignments in FIT2102 S2-2019
 
 First assignment using typescipt to make a simple Asteroid game with "Observables"
 
