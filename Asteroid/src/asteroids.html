@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <style>
+            @import url(style.css);
+            p.highlight {
+                color: red;
+            }
+            svg {
+                background-color: rgb(0, 0, 0);
+            }
+        </style>
+        <script src="../jstrans/svgelement.js"></script>
+        <script src="../jstrans/observable.js"></script>
+        <script src="../jstrans/asteroids.js"></script>
+    </head>
+    <body>
+        <h1>Asteroids</h1>
+            <h4>User guide:</h4>
+            <p>Using Arrow key for movement. Using Space key for firing. Using shift key for Quick thrust. Zoom out (Ctrl -) if arrow key affects your experience</p>
+            <p>NOTE: Spaceship need time to slow down especially when you thrust, it takes 2 second to finally stop (accelerator = -0.15). I do not want to make the game easy with thrust LOL :)</p>
+        <p id="lives">Lives: 3</p>
+        <p id="score">Score: 0</p>
+        <p id="lvl"> Level: 0</p>
+        <svg id="canvas" width="600" height="600">
+            <defs>
+                <pattern id="moon" x="0" y="0" height="100%" width="100%" patternContentUnits="objectBoundingBox">
+                  <image width="1" height="1" preserveAspectRatio="none" xlink:href="../img/moon.jpg"></image>
+               </pattern>
+             </defs>
+             <defs>
+                <pattern id="spaceship" x="0" y="0" height="100%" width="100%" patternContentUnits="objectBoundingBox">
+                  <image width="1" height="1" preserveAspectRatio="none" xlink:href="../img/spaceship.jpg"></image>
+               </pattern>
+             </defs>
+             <defs>
+                <pattern id="sun" x="0" y="0" height="100%" width="100%" patternContentUnits="objectBoundingBox">
+                  <image width="1" height="1" preserveAspectRatio="none" xlink:href="../img/sun.jpg"></image>
+               </pattern>
+             </defs>
+        </svg>
+    </body>
+</html>

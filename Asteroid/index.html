@@ -1,0 +1,94 @@
+<html>
+
+<head>
+  <style>
+    @import url(./src/style.css);
+  </style>
+</head>
+
+<body>
+  <h1>FIT2102 - Asteroids game</h1>
+  <h4>Student name: r00t</h4>
+  <h4>Student ID: ********</h4>
+  <p>
+    <a href="./src/observableexamples.html">Basic SVG Observable Examples</a><br />
+    <a href="./src/checklist.html">Observable Tests</a><br />
+    <a href="./src/asteroids.html">Asteroids game</a><br />
+  </p>
+  <h2>
+    Overview
+  </h2>
+  <p>
+    This assignment is about implementing
+    <a href="https://en.wikipedia.org/wiki/Observer_pattern">Observer pattern</a>
+    and functional programming pricinples in order to make Asteroids game.
+    I have implemented a full game with features required. I tried my best to reduce
+    mutable variables and make it purely functional.
+
+    <!-- This game is not purely functional, as to do so, we will have to make everything pure, even the userinput, which althought is possible but not feasible as one will have to pass around the whole pong state to mutate it. -->
+  </p>
+  <p>
+    My game is not completly implemented in pure functional way as I still
+    need the user statics (lives,level,...), asteroids array, DOM elements be mutable.
+    These mutable variables are supposed to be change based on user input. For example,
+    when user firing the bullet and it hit an asteroid, user score changes, asteroid
+    element in DOM need to be removed, new 3 smaller asteroids may appeared.
+    The cons of impurities is great as if we have mutable global variables in our program,
+    other functions may modify it in unexpected ways and cause unexpected side effects.
+    I tried my best to minimise all of that by using some good practice (Always declare variables
+    by "const" except some "let" for variables above at the beginning of program; restrict
+    all the side effects to subscribe() function;...)
+
+  </p>
+  <h2>Game details</h2>
+  <p>
+    In my asteroids game, there is a main Observable (gameTime) which take interval of 10
+    and filter if user is valid to play then do something. There are some other support
+    Observable handling spaceship respawn (respawn in safe position), winning/loosing
+    the game, creating asteroids and user keyboard input (so that user can use multiple keys at a time).
+    <h4>User guide:</h4>
+    <p>Using Arrow key for movement</p>
+    <p>Using Space key for firing</p>
+    <p>Using shift key for Quick thrust</p>
+    <p>NOTE: Spaceship need time to slow down especially when you thrust, it takes 2 second to finally stop (accelerator = -0.15) </p>
+    <h4>Game explaination</h4>
+  </p>
+  <h5>Game setup</h5>
+  <p>
+    Keep tracking status of the game status (game pause/game win/game loose).
+  </p>
+  <h5>Spaceship movement</h5>
+  <p>
+    Keep tracking direction of the keyboard input (moveup/left/right/up+right/...).
+    Handling boundary problem by modulo 600 (for x,y) modulo 360 for (rotation)
+  </p>
+  <h5>Bullet movement</h5>
+  <p>
+    Using ship rotation to firing bullet. In order to reduce number of bullets, I use
+    interval(100) instead of gameTime (which uses interval 10).
+  </p>
+  <p>
+    My first idea for bullets is create an array of bullets (mutable one) but then I think
+    I can reduce this mutable variable by using Observable to observe if it is still
+    in boundary or hit asteroid to remove right after creating bullet element. As life cycle
+    of a bullet is short, it will not take a lot of resource (memory) when using observable
+    for each bullet.
+    => Help reduce 1 mutable variable (bullets array)
+  </p>
+  <h5>Asteroid movement</h5>
+  <p>
+    Asteroids is reset when there are no asteroid in the canvas or you reach highest level.
+    It moves in a random direction, respawn in edge (safe for our spaceship)
+  </p>
+  <p>
+    I have the same idea as bullet but I am still stuck as asteroids array is neccessary to
+    check collision with a bullet (using forEach) so I cannot reduce this mutable variable.
+  </p>
+  <p>
+    As I use polygon instead of circle for space ship, it is harder to correctly detect collision
+    so I visually tested and come up with collision distance = 0.5*r_spaceship + r_asteroid where
+    r_spaceship is distance from it center to polygon points.
+  </p>
+</body>
+
+</html>

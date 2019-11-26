@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <style>
+            @import url(style.css);
+            p.highlight {
+                color: red;
+            }
+            svg {
+                background-color: beige;
+            }
+        </style>
+        <script src="../jstrans/svgelement.js"></script>
+        <script src="../jstrans/observable.js"></script>
+        <script src="../jstrans/observableexamples.js"></script>
+    </head>
+    <body>
+        <h1>Basic Observable Examples</h1>
+        <p></p>Pi approximation: <span id="value_piApproximation">...</span></p>
+        <svg id="piApproximationVis" width="300", height="300" viewBox="0 0 300 300">      
+            <rect x="0" y="0" width="300" height="300" fill="#dbedff"/>
+            <circle cx="150" cy="150" r="150" fill="#b7dbff"/>
+        </svg>
+        <hr>
+        <p>Mouse coords, turns red if x>400:</p>
+        <p id="pos">
+            0,0
+        </p>
+        <hr>
+        <p>Rectangle animated for 1 second:</p>
+        <svg id="animatedRect" width="600" height="600"/>
+        <hr>
+        <p>A draggable rectangle:</p>
+        <svg id="dragRect" width="600" height="600"/>
+        <hr>
+        <p>You can draw rectangles:</p>
+        <svg id="drawRects" width="600" height="600"/>
+        <hr>
+        <p>You can draw rectangles and drag them around:</p>
+        <svg id="drawAndDragRects" width="600" height="600"/>
+    </body>
+</html>
